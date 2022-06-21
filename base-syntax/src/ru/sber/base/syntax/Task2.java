@@ -1,5 +1,4 @@
 package ru.sber.base.syntax;
-import java.util.Arrays;
 public class Task2 {
     public static void quickSort(int[] array, int left, int right) {
 
