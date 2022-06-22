@@ -5,14 +5,6 @@ public class Matrix {
     int rows;
     int columns;
 
-    public void setValue(int i, int j, int value) {
-        matrix[i][j] = value;
-    }
-
-    public int getValue(int row, int columns) {
-        return matrix[row][columns];
-    }
-
     Matrix(int rows, int columns) {
         matrix = new int[rows][columns];
         this.rows = rows;
@@ -23,6 +15,14 @@ public class Matrix {
         this.matrix = matrix;
         rows = matrix.length;
         columns = matrix[0].length;
+    }
+
+    public void setValue(int i, int j, int value) {
+        matrix[i][j] = value;
+    }
+
+    public int getValue(int row, int columns) {
+        return matrix[row][columns];
     }
 
     public int getRows() {
