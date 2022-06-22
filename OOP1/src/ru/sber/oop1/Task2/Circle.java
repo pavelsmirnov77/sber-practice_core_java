@@ -4,17 +4,25 @@ public class Circle {
     int radius;
     String color;
 
-    public double area() {
-        return 3.14*radius*radius;
-    }
-
-    public String perimeter() {
-        return String.format("%.1f", 2*3.14*radius);
-    }
-
     Circle(int radius, String color) {
         this.radius = radius;
         this.color = color;
+    }
+
+    public double area() {
+        return calculateArea();
+    }
+
+    public String perimeter() {
+        return calculatePerimeter();
+    }
+
+    private double calculateArea() {
+        return 3.14*radius*radius;
+    }
+
+    private String calculatePerimeter() {
+        return String.format("%.1f", 2*3.14*radius);
     }
 
     @Override
