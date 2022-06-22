@@ -1,28 +1,28 @@
 package ru.sber.oop1.Task3;
 
 public class Matrix {
-    int[][] array;
+    int[][] matrix;
     int rows;
     int columns;
 
     public void setValue(int i, int j, int value) {
-        array[i][j] = value;
+        matrix[i][j] = value;
     }
 
     public int getValue(int row, int columns) {
-        return array[row][columns];
+        return matrix[row][columns];
     }
 
     public Matrix(int rows, int columns) {
-        array = new int[rows][columns];
+        matrix = new int[rows][columns];
         this.rows = rows;
         this.columns = columns;
     }
 
-    public Matrix(int[][] array) {
-        this.array = array;
-        rows = array.length;
-        columns = array[0].length;
+    public Matrix(int[][] matrix) {
+        this.matrix = matrix;
+        rows = matrix.length;
+        columns = matrix[0].length;
     }
 
     public int getRows() {
@@ -33,22 +33,22 @@ public class Matrix {
         return columns;
     }
 
-    public Matrix additionMatrix(Matrix arr) {
-        System.out.println("Получившаяся матрица после сложения ");
-        if (rows != arr.getRows() || columns != arr.getColumns()) {
+    public Matrix additionMatrix(Matrix matrix) {
+        System.out.println("Матрица, получившаяся после сложения ");
+        if (rows != matrix.getRows() || columns != matrix.getColumns()) {
             return new Matrix(0,0);
         }
         Matrix tempArr = new Matrix(rows,columns);
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < columns; j++) {
-                tempArr.setValue(i,j,this.getValue(i,j) + arr.getValue(i,j));
+                tempArr.setValue(i,j,this.getValue(i,j) + matrix.getValue(i,j));
             }
         }
         return tempArr;
     }
 
     public Matrix multiByNumber(int num) {
-        System.out.println("Получившаяся матрица после перемножения на число " + num);
+        System.out.println("Матрица, получившаяся после перемножения на число " + num);
         Matrix tempMatrix = new Matrix(rows, columns);
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.columns; j++) {
@@ -58,16 +58,16 @@ public class Matrix {
         return tempMatrix;
     }
 
-    public Matrix multiByMatrix(Matrix arr) {
+    public Matrix multiByMatrix(Matrix matrix) {
         System.out.println("Матрица, получившаяся после перемножения двух матриц ");
-        if (columns != arr.getColumns() || rows != arr.getRows()) {
+        if (columns != matrix.getColumns() || rows != matrix.getRows()) {
             return new Matrix(0,0);
         }
-        Matrix tempArr = new Matrix(rows, arr.getColumns());
+        Matrix tempArr = new Matrix(rows, matrix.getColumns());
         for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < arr.getColumns(); j++) {
+            for (int j = 0; j < matrix.getColumns(); j++) {
                 for (int k = 0; k < columns; k++) {
-                    tempArr.setValue(i, j, tempArr.getValue(i, j) + this.getValue(i, k) * arr.getValue(k, j));
+                    tempArr.setValue(i, j, tempArr.getValue(i, j) + this.getValue(i, k) * matrix.getValue(k, j));
                 }
             }
         }
