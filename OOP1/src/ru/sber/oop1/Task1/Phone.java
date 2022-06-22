@@ -32,7 +32,7 @@ public class Phone {
     Phone() {
     }
 
-    void sendMessage(String... numbers){
+    void sendMessage(String... numbers) {
         System.out.println(Arrays.toString(numbers));
     }
 
