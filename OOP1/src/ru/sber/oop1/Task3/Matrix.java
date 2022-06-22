@@ -38,13 +38,13 @@ public class Matrix {
         if (rows != matrix.getRows() || columns != matrix.getColumns()) {
             return new Matrix(0,0);
         }
-        Matrix tempArr = new Matrix(rows,columns);
+        Matrix tempMatrix = new Matrix(rows,columns);
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < columns; j++) {
-                tempArr.setValue(i,j,this.getValue(i,j) + matrix.getValue(i,j));
+                tempMatrix.setValue(i,j,this.getValue(i,j) + matrix.getValue(i,j));
             }
         }
-        return tempArr;
+        return tempMatrix;
     }
 
     public Matrix multiByNumber(int num) {
@@ -63,15 +63,15 @@ public class Matrix {
         if (columns != matrix.getColumns() || rows != matrix.getRows()) {
             return new Matrix(0,0);
         }
-        Matrix tempArr = new Matrix(rows, matrix.getColumns());
+        Matrix tempMatrix = new Matrix(rows, matrix.getColumns());
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < matrix.getColumns(); j++) {
                 for (int k = 0; k < columns; k++) {
-                    tempArr.setValue(i, j, tempArr.getValue(i, j) + this.getValue(i, k) * matrix.getValue(k, j));
+                    tempMatrix.setValue(i, j, tempMatrix.getValue(i, j) + this.getValue(i, k) * matrix.getValue(k, j));
                 }
             }
         }
-        return tempArr;
+        return tempMatrix;
     }
 
     public void print() {
