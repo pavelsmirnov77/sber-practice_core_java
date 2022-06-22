@@ -1,4 +1,6 @@
-package ru.sber.oop1;
+package ru.sber.oop1.Task2;
+
+import ru.sber.oop1.Task2.Circle;
 
 public class CircleTest {
     public static void main(String[] args) {

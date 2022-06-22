@@ -1,4 +1,4 @@
-package ru.sber.oop1;
+package ru.sber.oop1.Task1;
 import java.util.Arrays;
 
 public class Phone {
