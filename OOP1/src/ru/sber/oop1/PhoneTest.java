@@ -8,6 +8,7 @@ public class PhoneTest {
 
         phoneXiaomi.receiveCall("Мама");
         phonePoco.receiveCall("Папа", "89212432443");
+
         phoneApple.sendMessage("89003234348", "89218538494", "89003234345");
 
         System.out.println(phoneXiaomi.getNumber());
