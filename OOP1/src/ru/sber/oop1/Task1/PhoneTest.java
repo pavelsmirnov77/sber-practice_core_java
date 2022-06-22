@@ -1,4 +1,4 @@
-package ru.sber.oop1;
+package ru.sber.oop1.Task1;
 
 public class PhoneTest {
     public static void main(String[] args) {
