@@ -38,7 +38,7 @@ public class Phone {
 
     @Override
     public String toString() {
-        return String.format("Номер %s, Модель %s, Вес %s", number, model, weight);
+        return String.format("Номер %s, модель %s, вес %s", number, model, weight);
     }
 }
 
