@@ -52,7 +52,7 @@ public class Matrix {
         Matrix tempMatrix = new Matrix(rows, columns);
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.columns; j++) {
-                tempMatrix.setValue(i,j,this.getValue(i,j)* num);
+                tempMatrix.setValue(i,j,this.getValue(i,j) * num);
             }
         }
         return tempMatrix;
