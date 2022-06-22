@@ -13,13 +13,13 @@ public class Matrix {
         return matrix[row][columns];
     }
 
-    public Matrix(int rows, int columns) {
+    Matrix(int rows, int columns) {
         matrix = new int[rows][columns];
         this.rows = rows;
         this.columns = columns;
     }
 
-    public Matrix(int[][] matrix) {
+    Matrix(int[][] matrix) {
         this.matrix = matrix;
         rows = matrix.length;
         columns = matrix[0].length;
