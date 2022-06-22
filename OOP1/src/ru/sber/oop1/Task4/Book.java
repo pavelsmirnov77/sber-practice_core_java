@@ -1,5 +1,4 @@
 package ru.sber.oop1.Task4;
-import ru.sber.oop1.Task4.Author;
 
 public class Book {
     String name;
