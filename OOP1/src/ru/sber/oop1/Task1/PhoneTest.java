@@ -1,6 +1,4 @@
-package ru.sber.oop1.Task1;
-
-import ru.sber.oop1.Task1.Phone;
+package ru.sber.oop1;
 
 public class PhoneTest {
     public static void main(String[] args) {
