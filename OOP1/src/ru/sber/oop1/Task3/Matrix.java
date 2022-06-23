@@ -34,10 +34,11 @@ public class Matrix {
     }
 
     public Matrix additionMatrix(Matrix matrix) {
-        System.out.println("Матрица, получившаяся после сложения ");
         if (rows != matrix.getRows() || columns != matrix.getColumns()) {
+            System.out.println("Сложение невозможно, матрицы разной размерности!");
             return new Matrix(0,0);
         }
+        System.out.println("Матрица, получившаяся после сложения ");
         Matrix tempMatrix = new Matrix(rows,columns);
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < columns; j++) {
@@ -59,15 +60,16 @@ public class Matrix {
     }
 
     public Matrix multiByMatrix(Matrix matrix) {
-        System.out.println("Матрица, получившаяся после перемножения двух матриц ");
-        if (columns != matrix.getColumns() || rows != matrix.getRows()) {
+        if (columns != matrix.getRows()) {
+            System.out.println("Число столбцов первой матрицы != числу строк второй матрицы! Перемножение невозможно");
             return new Matrix(0,0);
         }
-        Matrix tempMatrix = new Matrix(rows, matrix.getColumns());
-        for (int i = 0; i < columns; i++) {
+        System.out.println("Матрица, получившаяся после перемножения двух матриц ");
+        Matrix tempMatrix = new Matrix(matrix.getRows(), matrix.getColumns());
+        for (int i = 0; i < matrix.getRows(); i++) {
             for (int j = 0; j < matrix.getColumns(); j++) {
-                for (int k = 0; k < columns; k++) {
-                    tempMatrix.setValue(i, j, tempMatrix.getValue(i, j) + this.getValue(i, k) * matrix.getValue(k, j));
+                for (int k = 0; k < matrix.getRows(); k++) {
+                    tempMatrix.setValue(i, j, tempMatrix.getValue(i, j) + matrix.getValue(i, k) * matrix.getValue(k, j));
                 }
             }
         }
