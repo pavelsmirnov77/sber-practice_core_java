@@ -69,7 +69,7 @@ public class Matrix {
         for (int i = 0; i < matrix.getRows(); i++) {
             for (int j = 0; j < matrix.getColumns(); j++) {
                 for (int k = 0; k < matrix.getRows(); k++) {
-                    tempMatrix.setValue(i, j, tempMatrix.getValue(i, j) + matrix.getValue(i, k) * matrix.getValue(k, j));
+                    tempMatrix.setValue(i, j, tempMatrix.getValue(i, j) + this.getValue(i, k) * matrix.getValue(k, j));
                 }
             }
         }
