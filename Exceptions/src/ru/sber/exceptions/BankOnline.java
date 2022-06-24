@@ -58,9 +58,6 @@ public class BankOnline {
 
             System.out.println(String.format("Перевод на карту с номером %s успешно проведен! Сумма перевода: %s", cardNumber, money));
 
-        } catch(NullParameterException exceptionNullParameter) {
-            System.out.println(exceptionNullParameter.getMessage());
-            exceptionNullParameter.printStackTrace();
         } catch (InvalidCardNumberException exceptionInvalidCardNumber) {
             System.out.println(exceptionInvalidCardNumber.getMessage());
             exceptionInvalidCardNumber.printStackTrace();
@@ -73,6 +70,9 @@ public class BankOnline {
         } catch (NegativeTransferAmountException exceptionNegativeTransferAmount) {
             System.out.println(exceptionNegativeTransferAmount.getMessage());
             exceptionNegativeTransferAmount.printStackTrace();
+        } catch(NullParameterException | NullPointerException exceptionNullParameter) {
+            System.out.println(exceptionNullParameter.getMessage());
+            exceptionNullParameter.printStackTrace();
         }
     }
 }
