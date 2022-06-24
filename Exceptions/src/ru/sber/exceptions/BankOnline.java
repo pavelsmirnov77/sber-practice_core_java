@@ -71,7 +71,7 @@ public class BankOnline {
             System.out.println(exceptionNegativeTransferAmount.getMessage());
             exceptionNegativeTransferAmount.printStackTrace();
         } catch(NullParameterException | NullPointerException exceptionNullParameter) {
-            System.out.println(exceptionNullParameter.getMessage());
+            System.out.println("Не все данные для перевода введены");
             exceptionNullParameter.printStackTrace();
         }
     }
