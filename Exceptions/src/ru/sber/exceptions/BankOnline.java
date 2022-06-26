@@ -36,43 +36,25 @@ public class BankOnline {
         return false;
     }
 
-    public void send(String cardNumber, Double money) {
-        try {
-            String cardNumberNoSpace = cardNumber.replace(" ", "");
-
-            if (isNumeric(cardNumberNoSpace) == false || cardNumberNoSpace.length() != 16) {
-                throw new InvalidCardNumberException("Неправильно указан номер карты");
-            }
-            if (checkBlockedCard(cardNumber)) {
-                throw new BlockedCardException("Карта заблокирована");
-            }
-            if (money < 0) {
-                throw new NegativeTransferAmountException("Неправильно указана сумму для перевода");
-            }
-            if (money > 50000) {
-                throw new OutOfLimitTransferException("Сумма перевода не может превышать 50000");
-            }
-            if (cardNumber == null || money == null) {
-                throw new NullParameterException("Не все данные для перевода введены");
-            }
-
-            System.out.println(String.format("Перевод на карту с номером %s успешно проведен! Сумма перевода: %s", cardNumber, money));
-
-        } catch (InvalidCardNumberException exceptionInvalidCardNumber) {
-            System.out.println(exceptionInvalidCardNumber.getMessage());
-            exceptionInvalidCardNumber.printStackTrace();
-        } catch (BlockedCardException exceptionBlockedCard) {
-            System.out.println(exceptionBlockedCard.getMessage());
-            exceptionBlockedCard.printStackTrace();
-        } catch (OutOfLimitTransferException exceptionOutOfLimitTransfer) {
-            System.out.println(exceptionOutOfLimitTransfer.getMessage());
-            exceptionOutOfLimitTransfer.printStackTrace();
-        } catch (NegativeTransferAmountException exceptionNegativeTransferAmount) {
-            System.out.println(exceptionNegativeTransferAmount.getMessage());
-            exceptionNegativeTransferAmount.printStackTrace();
-        } catch(NullParameterException | NullPointerException exceptionNullParameter) {
-            System.out.println("Не все данные для перевода введены");
-            exceptionNullParameter.printStackTrace();
+    public void send(String cardNumber, Double money) throws InvalidCardNumberException, NullParameterException, BlockedCardException, NegativeTransferAmountException, OutOfLimitTransferException {
+        if (cardNumber == null || money == null) {
+            throw new NullParameterException("Не все данные для перевода введены");
         }
+
+        String cardNumberNoSpace = cardNumber.replace(" ", "");
+
+        if (isNumeric(cardNumberNoSpace) == false || cardNumberNoSpace.length() != 16) {
+            throw new InvalidCardNumberException("Неправильно указан номер карты");
+        }
+        if (checkBlockedCard(cardNumber)) {
+            throw new BlockedCardException("Карта заблокирована");
+        }
+        if (money < 0) {
+            throw new NegativeTransferAmountException("Неправильно указана сумму для перевода");
+        }
+        if (money > 50000) {
+            throw new OutOfLimitTransferException("Сумма перевода не может превышать 50000");
+        }
+        System.out.println(String.format("Перевод на карту с номером %s успешно проведен! Сумма перевода: %s", cardNumber, money));
     }
 }

@@ -1,21 +1,40 @@
 package ru.sber.exceptions;
 
+import ru.sber.exceptions.BankOnline;
+import ru.sber.exceptions.BankOnlineException;
+import ru.sber.exceptions.NullParameterException;
+import ru.sber.exceptions.InvalidCardNumberException;
+
+import java.util.SortedMap;
+
 public class BankOnlineTest {
     public static void main(String[] args) {
-        BankOnline bankOnline = new BankOnline();
 
-        String firstCardName = "1234 5678 9123 4567";
-        String secondCardName = "4213 4342 3434";
-        String thirdCardName = "5328 1923 0120 2391";
-        String fourthCardName = "4832 3123 0430 3213";
-        String blockedCardName = "1111 1111 1111 1111";
+        try {
+            BankOnline bankOnline = new BankOnline();
+            bankOnline.send("1234 5678 9123 4567", 10_000.00);
+            //bankOnline.send("4728 9329 9320", 10_200.00);
+            //bankOnline.send("1111 1111 1111 1111", 1_500.00);
+            //bankOnline.send("1234 3123 3354 6854", 60_000.00);
+            //bankOnline.send(null, 10_000.00);
+            //bankOnline.send("4838 3293 4942 0948", -1.00);
 
-        bankOnline.send(firstCardName, 10_000.00);
-        bankOnline.send(secondCardName, 1_000.00);
-        bankOnline.send(thirdCardName, -1.00);
-        bankOnline.send(fourthCardName, 60_000.00);
-        bankOnline.send(blockedCardName, 500.00);
-        bankOnline.send(null, 50.00);
+        } catch (InvalidCardNumberException exceptionInvalidCardNumber) {
+            System.out.println(exceptionInvalidCardNumber.getMessage());
+            exceptionInvalidCardNumber.printStackTrace();
+        } catch (NullParameterException exceptionNullParameter) {
+            System.out.println(exceptionNullParameter.getMessage());
+            exceptionNullParameter.printStackTrace();
+        } catch (BlockedCardException exceptionBlockedCard) {
+            System.out.println(exceptionBlockedCard.getMessage());
+            exceptionBlockedCard.printStackTrace();
+        } catch (OutOfLimitTransferException exceptionOutOfLimitTransfer) {
+            System.out.println(exceptionOutOfLimitTransfer.getMessage());
+            exceptionOutOfLimitTransfer.printStackTrace();
+        } catch (NegativeTransferAmountException exceptionNegativeTransferAmount) {
+            System.out.println(exceptionNegativeTransferAmount.getMessage());
+            exceptionNegativeTransferAmount.printStackTrace();
+        }
     }
-
 }
+
