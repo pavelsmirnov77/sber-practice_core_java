@@ -12,12 +12,12 @@ public class BankOnlineTest {
             //bankOnline.send(null, 10_000.00);
             //bankOnline.send("4838 3293 4942 0948", -1.00);
 
-        } catch (InvalidCardNumberException exceptionInvalidCardNumber) {
-            System.out.println(exceptionInvalidCardNumber.getMessage());
-            exceptionInvalidCardNumber.printStackTrace();
         } catch (NullParameterException exceptionNullParameter) {
             System.out.println(exceptionNullParameter.getMessage());
             exceptionNullParameter.printStackTrace();
+        } catch (InvalidCardNumberException exceptionInvalidCardNumber) {
+            System.out.println(exceptionInvalidCardNumber.getMessage());
+            exceptionInvalidCardNumber.printStackTrace();
         } catch (BlockedCardException exceptionBlockedCard) {
             System.out.println(exceptionBlockedCard.getMessage());
             exceptionBlockedCard.printStackTrace();
