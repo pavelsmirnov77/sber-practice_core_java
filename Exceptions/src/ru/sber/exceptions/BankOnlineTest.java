@@ -1,12 +1,5 @@
 package ru.sber.exceptions;
 
-import ru.sber.exceptions.BankOnline;
-import ru.sber.exceptions.BankOnlineException;
-import ru.sber.exceptions.NullParameterException;
-import ru.sber.exceptions.InvalidCardNumberException;
-
-import java.util.SortedMap;
-
 public class BankOnlineTest {
     public static void main(String[] args) {
 
