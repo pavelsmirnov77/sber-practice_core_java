@@ -13,6 +13,8 @@ public class LinkedListTest {
             linkedList.add(5);
             linkedList.add(4);
             linkedList.add(8);
+            linkedList.add("Collection");
+            System.out.println(linkedList.toString());
 
             System.out.println(linkedList.isEmpty());
 
@@ -20,6 +22,7 @@ public class LinkedListTest {
 
             System.out.println(linkedList);
             linkedList.remove(2);
+            linkedList.remove("Collection");
             System.out.println(linkedList);
 
             System.out.println(linkedList.getFirst());

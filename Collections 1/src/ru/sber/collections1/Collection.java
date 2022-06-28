@@ -1,7 +1,6 @@
 package ru.sber.collections1;
 import java.lang.Iterable;
 
-
 public interface Collection extends Iterable<Object> {
     int size();
     boolean isEmpty();
