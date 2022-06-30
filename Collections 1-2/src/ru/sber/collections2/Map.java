@@ -1,6 +1,6 @@
 package ru.sber.collections2;
 
-import ru.sber.collections1.Collection;
+import ru.sber.collection1.Collection;
 
 public interface Map {
     int size();

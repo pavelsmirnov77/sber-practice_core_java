@@ -1,4 +1,4 @@
-package ru.sber.collections1;
+package ru.sber.collection1;
 import java.lang.Iterable;
 
 public interface Collection extends Iterable<Object> {

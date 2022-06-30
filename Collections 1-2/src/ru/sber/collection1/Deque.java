@@ -1,4 +1,4 @@
-package ru.sber.collections1;
+package ru.sber.collection1;
 
 public interface Deque extends Collection {
     void addFirst(Object item);
