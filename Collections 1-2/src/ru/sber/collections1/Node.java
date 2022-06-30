@@ -1,4 +1,4 @@
-package ru.sber.collection1;
+package ru.sber.collections1;
 
 public class Node {
     Object item;

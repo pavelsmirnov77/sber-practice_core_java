@@ -1,4 +1,4 @@
-package ru.sber.collection1;
+package ru.sber.collections1;
 
 public interface List extends Collection {
     void add(int index, Object item);
