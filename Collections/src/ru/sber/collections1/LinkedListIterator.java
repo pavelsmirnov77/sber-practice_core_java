@@ -1,12 +1,12 @@
 package ru.sber.collections1;
 import java.util.*;
 
-public class LinkedListIterator implements Iterator {
+public class LinkedListIterator<E> implements Iterator<E> {
 
-    private LinkedList linkedList;
+    private LinkedList<E> linkedList;
     private int i;
 
-    public LinkedListIterator(LinkedList linkedList) {
+    public LinkedListIterator(LinkedList<E> linkedList) {
         this.linkedList = linkedList;
         this.i = 0;
     }
@@ -17,7 +17,7 @@ public class LinkedListIterator implements Iterator {
     }
 
     @Override
-    public Object next() throws NoSuchElementException {
+    public E next() throws NoSuchElementException {
         if (hasNext()) {
             i++;
             return linkedList.get(i-1);

@@ -3,7 +3,7 @@ package ru.sber.collections1;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ArrayList implements List {
+public class ArrayList<E> implements List<E> {
 
     private int capacity = 10;
     private int size = 0;
@@ -25,14 +25,11 @@ public class ArrayList implements List {
 
     @Override
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        }
-        else return false;
+        return size == 0;
     }
 
     @Override
-    public boolean contains(Object item) {
+    public boolean contains(E item) {
         for (int i = 0; i < size; i++) {
             if (arrayList[i].equals(item)) {
                 return true;
@@ -56,7 +53,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public boolean remove(Object item) {
+    public boolean remove(E item) {
         boolean foundElement = false;
         for (int i = 0; i < size; i++)
             if (arrayList[i].equals(item)) {
@@ -74,7 +71,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public void add(int index, Object item) throws IndexOutOfBoundsException {
+    public void add(int index, E item) throws IndexOutOfBoundsException {
         if (size == capacity)
             arrayList = resize();
         if (index < 0 || index > size) {
@@ -91,27 +88,24 @@ public class ArrayList implements List {
     }
 
     @Override
-    public void set(int index, Object item) throws IndexOutOfBoundsException {
+    public void set(int index, E item) throws IndexOutOfBoundsException {
         if (index < 0 || index >= size)
             throw new IndexOutOfBoundsException("Вы вышли за пределы списка");
-        else if (index == size)
-            add(item);
-        else
-            arrayList[index] = item;
+        else arrayList[index] = item;
     }
 
     @Override
-    public Object get(int index) throws IndexOutOfBoundsException {
+    public E get(int index) throws IndexOutOfBoundsException {
         if (size == 0) {
             throw new NoSuchElementException("В списке нет элементов");
         }
         if (index < 0 || index >= size)
             throw new IndexOutOfBoundsException("Вы вышли за пределы списка");
-        return arrayList[index];
+        return (E) arrayList[index];
     }
 
     @Override
-    public int indexOf(Object item) {
+    public int indexOf(E item) {
 
         for (int i = 0; i < size; i++) {
             if (arrayList[i].equals(item)) {
@@ -122,7 +116,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public int lastIndexOf(Object item) {
+    public int lastIndexOf(E item) {
         for (int i = size - 1; i >= 0; i--) {
             if (arrayList[i].equals(item)) {
                 return i;
@@ -132,11 +126,11 @@ public class ArrayList implements List {
     }
 
     @Override
-    public Object remove(int index) throws IndexOutOfBoundsException {
+    public E remove(int index) throws IndexOutOfBoundsException {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Вы вышли за пределы списка");
         }
-        Object element = arrayList[index];
+        E element = (E) arrayList[index];
         for (int i = index; i < size; i++) {
             arrayList[i] = arrayList[i + 1];
         }
@@ -145,11 +139,11 @@ public class ArrayList implements List {
     }
 
     @Override
-    public List subList(int from, int to) throws IndexOutOfBoundsException {
+    public List<E> subList(int from, int to) throws IndexOutOfBoundsException {
         if ((from >= size) || (to - 1 >= size)) {
             throw new IndexOutOfBoundsException("Вы вышли за пределы списка");
         }
-        ArrayList subArrayList = new ArrayList();
+        ArrayList<E> subArrayList = new ArrayList<>();
         for (int i = from; i < to; i++) {
             subArrayList.add(arrayList[i]);
         }
@@ -168,8 +162,8 @@ public class ArrayList implements List {
     }
 
     @Override
-    public Iterator<Object> iterator() {
-        return new ArrayListIterator(this);
+    public Iterator<E> iterator() {
+        return new ArrayListIterator<>(this);
     }
 
     public String toString() {

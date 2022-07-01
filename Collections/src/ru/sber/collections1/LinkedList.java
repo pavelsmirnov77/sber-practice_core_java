@@ -3,9 +3,9 @@ package ru.sber.collections1;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedList implements List, Deque {
-    private Node first;
-    private Node last;
+public class LinkedList<E> implements List<E>, Deque<E> {
+    private Node<E> first;
+    private Node<E> last;
     private int size;
 
     @Override
@@ -24,8 +24,8 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public boolean contains(Object item) {
-        Node firstNode = first;
+    public boolean contains(E item) {
+        Node<E> firstNode = first;
         while (firstNode != null) {
             if (firstNode.item.equals(item)) {
                 return true;
@@ -36,15 +36,15 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public boolean add(Object item) {
+    public boolean add(E item) {
         addLast(item);
         return true;
     }
 
     @Override
-    public boolean remove(Object item) {
+    public boolean remove(E item) {
         boolean foundElement = false;
-        Node firstNode = first;
+        Node<E> firstNode = first;
         while (firstNode != null) {
             if (firstNode.item.equals(item)) {
                 if (firstNode.prev == null) {
@@ -73,8 +73,8 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public void addFirst(Object item) {
-        Node node = new Node();
+    public void addFirst(E item) {
+        Node<E> node = new Node<>();
         node.item = item;
         if (size == 0) {
             add(item);
@@ -87,12 +87,12 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public void addLast(Object item) {
+    public void addLast(E item) {
         add(size, item);
     }
 
     @Override
-    public Object getFirst() throws NoSuchElementException {
+    public E getFirst() throws NoSuchElementException {
         if (size == 0) {
             throw new NoSuchElementException("В связном списке нет элементов");
         }
@@ -100,7 +100,7 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public Object getLast() throws NoSuchElementException {
+    public E getLast() throws NoSuchElementException {
         if (size == 0) {
             throw new NoSuchElementException("В полносвязном списке нет элементов");
         }
@@ -108,31 +108,31 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public Object pollFirst() throws NoSuchElementException {
+    public E pollFirst() {
         if (size == 0) {
-            throw new NoSuchElementException("В полносвязном списке нет элементов");
+            return null;
         }
-        Node firstNode = last;
+        Node<E> firstNode = first;
         removeFirst();
         return firstNode.item;
     }
 
     @Override
-    public Object pollLast() throws NoSuchElementException {
+    public E pollLast() {
         if (size == 0) {
-            throw new NoSuchElementException("В полносвязном списке нет элементов");
+            return null;
         }
-        Node lastNode = last;
+        Node<E> lastNode = last;
         removeLast();
         return lastNode.item;
     }
 
     @Override
-    public Object removeFirst() throws NoSuchElementException {
+    public E removeFirst() throws NoSuchElementException {
         if (size == 0) {
             throw new NoSuchElementException("В полносвязном списке нет элементов");
         }
-        Node firstNode = first;
+        Node<E> firstNode = first;
         if (first.next != null) {
             first.next.prev = null;
         }
@@ -142,11 +142,11 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public Object removeLast() throws NoSuchElementException {
+    public E removeLast() throws NoSuchElementException {
         if (size == 0) {
             throw new NoSuchElementException("В полносвязном списке нет элементов");
         }
-        Node lastNode = last;
+        Node<E> lastNode = last;
         if (last.prev != null) {
             last.prev.next = null;
         }
@@ -156,8 +156,8 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public void add(int index, Object item) {
-        Node node = new Node();
+    public void add(int index, E item) {
+        Node<E> node = new Node<>();
         node.item = item;
 
         if (first == null) {
@@ -172,8 +172,8 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public void set(int index, Object item) {
-        Node firstNode = first;
+    public void set(int index, E item) {
+        Node<E> firstNode = first;
         int i = 0;
         if (index == size){
             addLast(item);
@@ -187,11 +187,11 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public Object get(int index) throws IndexOutOfBoundsException {
+    public E get(int index) throws IndexOutOfBoundsException {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Вы вышли за пределы полносвязного списка");
         }
-        Node firstNode = first;
+        Node<E> firstNode = first;
         int i = 0;
         while ((firstNode != null) && (i < index)) {
             firstNode = firstNode.next;
@@ -201,9 +201,9 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public int indexOf(Object item) {
+    public int indexOf(E item) {
         int i = 0;
-        Node firstNode = first;
+        Node<E> firstNode = first;
         while (firstNode != null) {
             if (firstNode.item.equals(item)) {
                 return i;
@@ -215,9 +215,9 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public int lastIndexOf(Object item) {
+    public int lastIndexOf(E item) {
         int i = size - 1;
-        Node ptr = last;
+        Node<E> ptr = last;
         while (ptr != null) {
             if (ptr.item.equals(item)) {
                 return i;
@@ -230,12 +230,12 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public Object remove(int index) throws IndexOutOfBoundsException {
+    public E remove(int index) throws IndexOutOfBoundsException {
         if (index >= size) {
             throw new IndexOutOfBoundsException("Вы вышли за пределы полносвязного списка");
         } else {
             int i = 0;
-            Node firstNode = first;
+            Node<E> firstNode = first;
             while ((firstNode != null) && (i < index)) {
                 firstNode = firstNode.next;
                 i++;
@@ -256,12 +256,12 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public List subList(int from, int to) throws IndexOutOfBoundsException {
+    public List<E> subList(int from, int to) throws IndexOutOfBoundsException {
         if ((from >= size) || (to - 1 >= size)) {
             throw new IndexOutOfBoundsException("Вы вышли за границы связного списка");
         } else {
-            List subLinkedList = new LinkedList();
-            Node fir = first;
+            List<E> subLinkedList = new LinkedList<>();
+            Node<E> fir = first;
             int i = 0;
             while (fir != null) {
                 if ((i >= from) && (i < to)) {
@@ -275,16 +275,16 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public Iterator<Object> iterator() {
-        return new LinkedListIterator(this);
+    public Iterator<E> iterator() {
+        return new LinkedListIterator<>(this);
     }
 
     private String print(){
         String elements = "";
-        Node firstNode = first;
+        Node<E> firstNode = first;
         int i = 0;
         while ((firstNode != null) && (i < size)) {
-            elements += firstNode.item;
+            elements += (E)firstNode.item;
             if (i + 1 < size) {
                 elements += " ";
             }
