@@ -2,14 +2,19 @@ package ru.sber.collections2;
 
 public class HashMapTest {
     public static void main(String[] args) {
-        HashMap hashMap = new HashMap();
+        HashMap<String, String> hashMap = new HashMap<>();
 
         hashMap.put("Студент", "Иван");
         hashMap.put("Спортсмен", "Олег");
         hashMap.put("Медбрат", "Артем");
         hashMap.put("Актриса", "Ольга");
         hashMap.put("Учитель", "Елена");
+        hashMap.put("Официант", "Евгений");
+        hashMap.put("Гонщик", "Петр");
+        hashMap.put("Судья", "Марина");
         System.out.println(hashMap.toString());
+
+        System.out.println("Размер HashMap: " + hashMap.size());
 
         System.out.println("Есть значение с ключом 'Учитель': " + hashMap.containsKey("Учитель"));
         System.out.println("Есть значение с ключом 'Программист': " + hashMap.containsKey("Программист"));
