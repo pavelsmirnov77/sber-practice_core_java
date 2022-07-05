@@ -48,7 +48,7 @@ public class TestedClassTest {
     @Test
     public void privateMethodTest() throws Exception {
         TestedClass testedClass = new TestedClass();
-        Method privateMethod = TestedClass.class.getDeclaredMethod("getFigure", null);
+        Method privateMethod = TestedClass.class.getDeclaredMethod("getFigureName", null);
         privateMethod.setAccessible(true);
         String returnValue = (String) privateMethod.invoke(testedClass, null);
         assertEquals("Cylinder", returnValue);
