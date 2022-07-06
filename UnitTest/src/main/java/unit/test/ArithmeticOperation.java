@@ -1,31 +1,27 @@
 package unit.test;
 
-public class Figure extends ArithmeticOperation {
-
-    private final static double PI = 3.14;
-
-    public double perimeterSquare(int a) {
-        return multiplication(4,a);
+public class ArithmeticOperation {
+    public double summation(double a, double b) {
+        return a + b;
     }
 
-    public double areaSquare(int a) {
-        return involution(a, 2);
+    public double subtraction(double a, double b) {
+        return a - b;
     }
 
-    public double perimeterRectangle(int a, int b) {
-        return multiplication(summation(a, b), 2);
+    public double multiplication(double a, double b) {
+        return a * b;
     }
 
-    public double areaRectangle(int a, int b) {
-        return multiplication(a, b);
+    public double division(double a, double b) {
+        return a / b;
     }
 
-    public double perimeterCircle(double r) {
-        return multiplication(multiplication(2, PI), r);
+    public double involution(double a, int power) {
+        double result = 1;
+        for (int i = 0; i < power;i++) {
+            result = result * a;
+        }
+        return result;
     }
-
-    public double areaCircle(double r) {
-        return multiplication(PI, involution(r, 2));
-    }
-
 }
