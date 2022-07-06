@@ -1,7 +1,8 @@
+package unit.test;
 
 public class Figure extends ArithmeticOperation {
 
-    private final double PI = 3.14;
+    private final static double PI = 3.14;
 
     public double perimeterSquare(int a) {
         return multiplication(4,a);

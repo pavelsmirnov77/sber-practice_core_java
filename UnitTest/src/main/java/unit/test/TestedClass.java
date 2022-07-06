@@ -1,3 +1,5 @@
+package unit.test;
+
 public class TestedClass extends Figure {
     public double areaCylinder(double r, double h) {
         return multiplication(perimeterCircle(r), summation(r, h));
@@ -10,5 +12,4 @@ public class TestedClass extends Figure {
     private String getFigureName() {
         return "Cylinder";
     }
-
 }
