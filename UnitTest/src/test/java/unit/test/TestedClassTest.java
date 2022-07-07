@@ -9,7 +9,7 @@ import static org.mockito.Mockito.*;
 
 public class TestedClassTest {
     private final static double DELTA = 1e-15;
-    public final static TestedClass TESTED_CLASS = new TestedClass();
+    private final static TestedClass TESTED_CLASS = new TestedClass();
     private final static double TESTED_AREA_CIRCLE = 28.26;
     private final static double TESTED_PERIMETER_CIRCLE = 12.56;
     private final static double TESTED_MULTIPLICATION = 6.0;
