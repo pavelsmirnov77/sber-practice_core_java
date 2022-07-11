@@ -26,7 +26,7 @@ public class StreamClassTest {
         //+5 к четным, -5 к нечетным
         double newList = list
                 .stream()
-                .map(elem -> (elem%2 == 0) ? elem + 5 : elem - 5)
+                .map(elem -> (elem % 2 == 0) ? elem + 5 : elem - 5)
                 .mapToInt(elem -> elem)
                 .average()
                 .getAsDouble();
