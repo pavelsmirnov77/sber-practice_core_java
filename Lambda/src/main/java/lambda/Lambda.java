@@ -23,7 +23,7 @@ public class Lambda {
         return intSupplier.getAsInt();
     }
 
-    public static void methodConsumer(Consumer consumer) {
+    public static void methodConsumer(Consumer<String> consumer) {
         consumer.accept("Cons");
     }
 
