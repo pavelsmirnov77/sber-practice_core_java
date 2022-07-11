@@ -35,10 +35,10 @@ public class LambdaTest {
         OneArgFunctionalInterface oneArgFunctionalInterface = new OneArgFunctionalInterface() {
             @Override
             public double oneArgMethod(double a) {
-                double result = a * 2;
-                return result;
+                return a * 2;
             }
         };
+
         assertEquals(2.6, oneArgFunctionalInterface.oneArgMethod(1.3), DELTA);
     }
 
@@ -49,10 +49,10 @@ public class LambdaTest {
         TwoArgsFunctionalInterface twoArgsFunctionalInterface = new TwoArgsFunctionalInterface() {
             @Override
             public double twoArgsMethod(double a, double b) {
-                double result = a + b;
-                return result;
+                return a + b;
             }
         };
+
         assertEquals(6.6, twoArgsFunctionalInterface.twoArgsMethod(2.3, 4.3), DELTA);
     }
 
@@ -63,10 +63,10 @@ public class LambdaTest {
         UnaryOperator<String> function = new UnaryOperator<String>() {
             @Override
             public String apply(String a) {
-                String b = a + " Interface";
-                return b;
+                return a + " Interface";
             }
         };
+
         assertEquals(METHOD_FUNCTION_TEST_STRING, function.apply("Function"));
     }
 
@@ -77,18 +77,18 @@ public class LambdaTest {
         IntSupplier intSupplier = new IntSupplier() {
             @Override
             public int getAsInt() {
-                int b = 100;
-                return b;
+                return 100;
             }
         };
+
         assertEquals(100, intSupplier.getAsInt());
     }
 
     @Test
     public void getMethodConsumerTest() {
-        assertFalse("Consumer", Lambda.methodConsumer((b) -> b.equals("consumer")));
+        assertFalse("Consumer", Lambda.methodConsumer(b -> b.equals("consumer")));
 
-        Consumer consumer = new Consumer() {
+        Consumer<Object> consumer = new Consumer<>() {
             @Override
             public void accept(Object o) {
             }
@@ -99,6 +99,7 @@ public class LambdaTest {
                 return a.equals(o);
             }
         };
+
         assertTrue(String.valueOf(3), consumer.equals(3));
     }
 
@@ -116,6 +117,7 @@ public class LambdaTest {
                 return a.test(s);
             }
         };
+
         assertTrue(METHOD_PREDICATE_TEST_STRING, predicate.test("Predicate"));
     }
 }
