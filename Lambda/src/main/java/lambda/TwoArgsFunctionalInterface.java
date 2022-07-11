@@ -1,6 +1,6 @@
-package ru.sber.lambda;
+package lambda;
 
 @FunctionalInterface
 public interface TwoArgsFunctionalInterface {
-    void twoArgsMethod(double a, double b);
+    double twoArgsMethod(double a, double b);
 }

@@ -1,6 +1,6 @@
-package ru.sber.lambda;
+package lambda;
 
 @FunctionalInterface
 public interface ZeroArgsFunctionalInterface {
-    public void zeroArgsMethod();
+    String zeroArgsMethod();
 }

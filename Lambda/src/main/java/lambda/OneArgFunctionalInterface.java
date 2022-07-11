@@ -1,6 +1,6 @@
-package ru.sber.lambda;
+package lambda;
 
 @FunctionalInterface
-public interface OneArgFunctionalInterface<N> {
-    void oneArgMethod(double a);
+public interface OneArgFunctionalInterface {
+    double oneArgMethod(double a);
 }
