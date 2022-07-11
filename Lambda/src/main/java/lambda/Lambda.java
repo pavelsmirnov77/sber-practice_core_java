@@ -23,9 +23,8 @@ public class Lambda {
         return intSupplier.getAsInt();
     }
 
-    public static boolean methodConsumer(Consumer consumer) {
-        consumer.equals(3);
-        return false;
+    public static void methodConsumer(Consumer consumer) {
+        consumer.accept("Cons");
     }
 
     public static boolean methodPredicate(String a, Predicate<String> b) {
