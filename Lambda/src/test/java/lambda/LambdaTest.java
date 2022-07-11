@@ -18,11 +18,15 @@ public class LambdaTest {
 
     @Test
     public void getMethodOneTest() {
-        assertEquals(METHOD_ONE_TEST_STRING, Lambda.methodOne(() -> "Первый метод вызван"));
+        assertEquals(METHOD_ONE_TEST_STRING, Lambda.methodOne(() -> {
+            System.out.println("Первый метод вызыван");
+            return "Первый метод вызван";
+        }));
 
         assertEquals(METHOD_ONE_TEST_STRING, Lambda.methodOne(new ZeroArgsFunctionalInterface() {
             @Override
             public String zeroArgsMethod() {
+                System.out.println("Первый метод вызыван");
                 return "Первый метод вызван";
             }
         }));
@@ -30,11 +34,15 @@ public class LambdaTest {
 
     @Test
     public void getMethodTwoTest() {
-        assertEquals(2.6, Lambda.methodTwo(1.3, a -> a * 2), DELTA);
+        assertEquals(2.6, Lambda.methodTwo(1.3, a -> {
+            System.out.println(a * 2);
+            return a * 2;
+        }), DELTA);
 
         OneArgFunctionalInterface oneArgFunctionalInterface = new OneArgFunctionalInterface() {
             @Override
             public double oneArgMethod(double a) {
+                System.out.println(a * 2);
                 return a * 2;
             }
         };
@@ -44,11 +52,15 @@ public class LambdaTest {
 
     @Test
     public void getMethodThreeTest() {
-        assertEquals(6.6, Lambda.methodThree(2.3, 4.3, Double::sum), DELTA);
+        assertEquals(6.6, Lambda.methodThree(2.3, 4.3, (a, b) -> {
+            System.out.println(a + b);
+            return a + b;
+        }), DELTA);
 
         TwoArgsFunctionalInterface twoArgsFunctionalInterface = new TwoArgsFunctionalInterface() {
             @Override
             public double twoArgsMethod(double a, double b) {
+                System.out.println(a + b);
                 return a + b;
             }
         };
@@ -58,11 +70,15 @@ public class LambdaTest {
 
     @Test
     public void getMethodFunctionTest() {
-        assertEquals(METHOD_FUNCTION_TEST_STRING, Lambda.methodFunction("Function", a -> a + " Interface"));
+        assertEquals(METHOD_FUNCTION_TEST_STRING, Lambda.methodFunction("Function", a -> {
+            System.out.println(a + " Interface");
+            return a + " Interface";
+        }));
 
         UnaryOperator<String> function = new UnaryOperator<String>() {
             @Override
             public String apply(String a) {
+                System.out.println(a + " Interface");
                 return a + " Interface";
             }
         };
@@ -72,11 +88,15 @@ public class LambdaTest {
 
     @Test
     public void getMethodIntSupplierTest() {
-        assertEquals(Optional.of(100), Optional.of(Lambda.methodIntSupplier(() -> 100)));
+        assertEquals(Optional.of(100), Optional.of(Lambda.methodIntSupplier(() -> {
+            System.out.println(100);
+            return 100;
+        })));
 
         IntSupplier intSupplier = new IntSupplier() {
             @Override
             public int getAsInt() {
+                System.out.println(100);
                 return 100;
             }
         };
@@ -86,27 +106,23 @@ public class LambdaTest {
 
     @Test
     public void getMethodConsumerTest() {
-        assertFalse("Consumer", Lambda.methodConsumer(b -> b.equals("consumer")));
+        Lambda.methodConsumer(b -> System.out.println(b + "umer"));
 
-        Consumer<Object> consumer = new Consumer<>() {
+        Consumer<String> consumer = new Consumer<>() {
             @Override
-            public void accept(Object o) {
-            }
-
-            @Override
-            public boolean equals(Object o) {
-                Object a = 3;
-                return a.equals(o);
+            public void accept(String s) {
+                System.out.println(s + "umer");
             }
         };
 
-        assertTrue(String.valueOf(3), consumer.equals(3));
+        consumer.accept("Cons");
     }
 
     @Test
     public void getMethodPredicateTest() {
         assertTrue(METHOD_PREDICATE_TEST_STRING, Lambda.methodPredicate("Predicate", (b) -> {
             Predicate<String> a = Predicate.isEqual("Predicate");
+            System.out.println(a.test(b));
             return a.test(b);
         }));
 
@@ -114,6 +130,7 @@ public class LambdaTest {
             @Override
             public boolean test(String s) {
                 Predicate<String> a = Predicate.isEqual("Predicate");
+                System.out.println(a.test(s));
                 return a.test(s);
             }
         };
