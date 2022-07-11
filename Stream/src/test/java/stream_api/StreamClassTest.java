@@ -18,36 +18,19 @@ public class StreamClassTest {
         for (int i = 0; i < 10; i++) {
             list.add(i);
         }
-        list.forEach(elem -> System.out.print(elem + " "));
-        System.out.println();
+        System.out.println(list);
 
         list = list.stream().limit(list.size() - 3).collect(Collectors.toList());
-        list.forEach(elem -> System.out.print(elem + " "));
+        System.out.println(list);
 
         //+5 к четным, -5 к нечетным
-        List<Integer> listEvenElements = list
+        double newList = list
                 .stream()
-                .filter(elemEven -> elemEven % 2 == 0)
-                .map(elemEven -> elemEven + 5)
-                .collect(Collectors.toList());
-        List<Integer> listNotEvenElements = list
-                .stream()
-                .filter(elemNotEven -> elemNotEven % 2 != 0)
-                .map(elemNotEven -> elemNotEven - 5)
-                .collect(Collectors.toList());
-        List<Integer> newList = Stream
-                .concat(listEvenElements.stream(), listNotEvenElements.stream())
-                .collect(Collectors.toList());
-        System.out.println();
-        newList.stream().sorted().forEach(elem -> System.out.print(elem + " "));
-
-        //поиск среднего значения
-        System.out.println();
-        System.out.println("Среднее значение: " + newList
-                .stream()
+                .map(elem -> (elem%2 == 0) ? elem + 5 : elem - 5)
                 .mapToInt(elem -> elem)
                 .average()
-                .getAsDouble());
+                .getAsDouble();
+        System.out.println(newList);
     }
 
     @Test
@@ -56,13 +39,12 @@ public class StreamClassTest {
         for (int i = 0; i < 10; i++) {
             set.add("abc".repeat(i + 1));
         }
-        System.out.println();
         System.out.println(set);
         Map<Integer, String> map = set
                 .stream()
                 .filter(elem -> elem.length() > 10)
                 .collect(Collectors.toMap(String::length, Function.identity()));
-        map.forEach((key, value) -> System.out.println(key + " " + value));
+        System.out.println(map);
     }
 
     @Test
@@ -71,8 +53,7 @@ public class StreamClassTest {
         for (int i = 0; i < 5; i++) {
             newMap.put("aa".repeat(i + 1), "bb".repeat(i + 1));
         }
-        System.out.println();
-        newMap.forEach((key, value) -> System.out.println(key + "-key " + value));
+        System.out.println(newMap);
 
         List<String> listMap = newMap
                 .entrySet()
@@ -87,9 +68,7 @@ public class StreamClassTest {
                 .stream()
                 .flatMap(elem -> Stream.of(elem.getKey(), elem.getValue()))
                 .collect(Collectors.toList());
-        listMap.forEach(elem -> System.out.print(elem + " "));
-        System.out.println();
-        System.out.println();
+        System.out.println(listMap);
     }
 
     @Test
