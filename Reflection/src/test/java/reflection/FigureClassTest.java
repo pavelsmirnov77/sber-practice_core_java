@@ -35,7 +35,7 @@ public class FigureClassTest {
         Constructor<FigureClass> privateConstructorFigure = FigureClass.class.getDeclaredConstructor(String.class, String.class, double.class);
         privateConstructorFigure.setAccessible(true);
         FigureClass privateFigure = privateConstructorFigure.newInstance("Квадрат", "черный", 4.2);
-        System.out.println(privateFigure instanceof FigureClass);
+        System.out.println(privateFigure.equals(null));
 
         System.out.println(Arrays.toString(publicConstructorFigure.getParameterTypes()));
     }
