@@ -1,7 +1,9 @@
 package reflection;
 
 import java.lang.reflect.*;
+
 import org.junit.Test;
+
 import java.util.Arrays;
 
 public class FigureClassTest {
@@ -23,7 +25,9 @@ public class FigureClassTest {
         Method privateMethod = GET_MY_CLASS.getDeclaredMethod("calculateArea");
         privateMethod.setAccessible(true);
         System.out.println(privateMethod.invoke(PUBLIC_SQUARE));
-        System.out.println(Arrays.toString(GET_MY_CLASS.getSuperclass().getDeclaredMethods()));
+        Arrays.stream(GET_MY_CLASS.getSuperclass()
+                .getDeclaredMethods()).forEach(
+                f -> System.out.println(f.getName()));
         System.out.println(Arrays.toString(privateMethod.getExceptionTypes()));
     }
 
